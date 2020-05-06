@@ -33,8 +33,8 @@ node {
     stage('Build Docker Image') {
       // build docker image
       bat(/"whoami"/)
-      sh "ls -all /var/run/docker.sock"
-      sh "mv ./target/hello*.jar ./data" 
+      bat(/"ls -all /var/run/docker.sock"/)
+      bat(/"mv ./target/hello*.jar ./data" /)
       
       dockerImage = docker.build("hello-world-java")
     }
