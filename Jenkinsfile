@@ -32,7 +32,7 @@ node {
 		
     stage('Build Docker Image') {
       // build docker image
-      sh "whoami"
+      bat(/"whoami"/)
       sh "ls -all /var/run/docker.sock"
       sh "mv ./target/hello*.jar ./data" 
       
