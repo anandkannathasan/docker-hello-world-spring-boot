@@ -21,8 +21,13 @@ node {
     }    
   
     stage('Build Project') {
-      // build project via maven
-      sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+      // build project via maven      
+      if (isUnix()) {
+         sh "'${mvnHome}/bin/mvn' -Dmaven.test.failure.ignore clean package"
+      } 
+      else {
+         bat(/"${mvnHome}\bin\mvn" -Dmaven.test.failure.ignore clean package/)
+      }
     }	
 		
     stage('Build Docker Image') {
